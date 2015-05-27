@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'forge',
-			'username'  => 'forge',
-			'password'  => '',
+			'database'  => 'proyecto_laravel',
+			'username'  => 'tester',
+			'password'  => 'tester2015',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

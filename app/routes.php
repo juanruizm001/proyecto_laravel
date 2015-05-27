@@ -18,8 +18,9 @@ Route::get('/', function()
 
 
 
-/*//Creacion de tabla en BD mediante SCHEMA
-Route::get('creartabla', function()
+/*
+//Creacion de tabla en BD mediante SCHEMA
+Route::get('creartablausers', function()
 {
     Schema::create('users', function($tabla)
     {
@@ -34,10 +35,28 @@ Route::get('creartabla', function()
         $tabla->string('password');
         $tabla->timestamps();
     });
-});*/
+});
+*/
 
-//Carga de datos a BD mediante routes
-Route::get('registrar', function()
+/*
+Route::get('creartablaproducts', function()
+{
+    Schema::create('products', function($tabla)
+    {
+        $tabla->increments('id');
+        $tabla->string('nombre');
+        $tabla->text('descripcion');
+        $tabla->integer('cantidad');
+        $tabla->integer('precio');
+        $tabla->timestamps();
+    });
+    return ("Tabla de productos creada");
+});
+*/
+
+/*
+//Carga de datos a BD mediante routes (Más facil que mediante seeders)
+Route::get('registraruser', function()
 {
     $user = new User;
     $user->name="Raul";
@@ -52,5 +71,55 @@ Route::get('registrar', function()
     //Guardamos
     $user->save();
     return "El usuario fué agregado.";
+});
+*/
 
+//Registrar producto
+Route::get('registrarproducto', function()
+{
+    $producto = new Product();
+    $producto->nombre="tablet";
+    $producto->descripcion="tablet de muestra";
+    $producto->cantidad=30;
+    $producto->precio=150;
+
+    //Guardamos
+    $producto->save();
+    return "El producto fué agregado.";
+});
+
+
+//Buscar producto por ID
+Route::get('buscar', function()
+{
+    $producto = Product::find(1);
+    return ('El nombre del producto es: '.$producto->nombre);
+});
+
+
+//Buscar producto por alguna condicion o campo distinto de ID
+Route::get('buscarxcondicion', function()
+{
+    $producto = Product::where('nombre','=','tablet')->get();
+    return ('La cantidad de tablet es: '.$producto[0]['cantidad']);
+});
+
+
+//Actualizar producto por ID
+Route::get('actualizarproducto', function()
+{
+    $producto = Product::find(2);
+    $producto->cantidad=68;
+    $producto->precio=675;
+    $producto->save();
+    return ('Producto actualizado');
+});
+
+
+//Eliminar producto por ID
+Route::get('eliminar', function()
+{
+    $producto = Product::find(3);
+    $producto->delete();
+    return ('El producto con el ID fué eliminado');
 });

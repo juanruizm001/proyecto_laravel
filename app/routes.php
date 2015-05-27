@@ -35,3 +35,22 @@ Route::get('creartabla', function()
         $tabla->timestamps();
     });
 });*/
+
+//Carga de datos a BD mediante routes
+Route::get('registrar', function()
+{
+    $user = new User;
+    $user->name="Raul";
+    $user->last_name="Contreras";
+    $user->email="raulito21@gmail.com";
+    $user->address="Calle 9 de julio #244";
+    $user->phone="52224799";
+    $user->username="ra21";
+    $user->level=0;
+    $user->password="hola";
+
+    //Guardamos
+    $user->save();
+    return "El usuario fué agregado.";
+
+});

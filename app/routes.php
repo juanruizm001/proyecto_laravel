@@ -15,3 +15,23 @@ Route::get('/', function()
 {
 	return View::make('login');
 });
+
+
+
+/*//Creacion de tabla en BD mediante SCHEMA
+Route::get('creartabla', function()
+{
+    Schema::create('users', function($tabla)
+    {
+        $tabla->increments('id');
+        $tabla->string('name');
+        $tabla->string('last_name');
+        $tabla->string('email')->unique();
+        $tabla->string('address');
+        $tabla->integer('phone');
+        $tabla->string('username');
+        $tabla->boolean('level');
+        $tabla->string('password');
+        $tabla->timestamps();
+    });
+});*/

@@ -14,7 +14,7 @@ class UserLogin extends BaseController {
         if(Auth::attempt($userdata))
         {
             // we are now logged in, go to admin
-            return View::make('hello');
+            return Redirect::to('admin');
         }
         else
         {

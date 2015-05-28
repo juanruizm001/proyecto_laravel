@@ -16,7 +16,26 @@ Route::get('/', function()
 	return View::make('login');
 });
 
+//Login
 Route::post('login', 'UserLogin@user');
+//Logout
+Route::get('logout', function()
+{
+    Auth::logout();
+    return Redirect::to('/');
+});
+// ruta de administracion
+Route::get('admin', array('before' => 'auth', function()
+{
+    return View::make('dashboard.index');
+}));
+
+
+//rutas del sistema
+Route::controller('package', 'PackageController');
+Route::controller('users', 'UsersController');
+Route::controller('user/getuser', 'getuserController');
+
 
 
 /*

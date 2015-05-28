@@ -16,10 +16,24 @@ Route::get('/', function()
 	return View::make('login');
 });
 
+Route::post('login', 'UserLogin@user');
+
+
+/*
+Route::post('username', function()
+{
+    $usuario=Input::get('username');
+    $password=Input::get('password');
+return ($usuario.' '.$password);
+});
+*/
+
+/*
 Route::get('login2', array('before'=>'auth.basic', function()
 {
     return View::make('hello');
 }));
+*/
 
 /*
 //Creacion de tabla en BD mediante SCHEMA

@@ -16,7 +16,10 @@ Route::get('/', function()
 	return View::make('login');
 });
 
-
+Route::get('login2', array('before'=>'auth.basic', function()
+{
+    return View::make('hello');
+}));
 
 /*
 //Creacion de tabla en BD mediante SCHEMA
@@ -74,6 +77,7 @@ Route::get('registraruser', function()
 });
 */
 
+/*
 //Registrar producto
 Route::get('registrarproducto', function()
 {
@@ -87,24 +91,27 @@ Route::get('registrarproducto', function()
     $producto->save();
     return "El producto fué agregado.";
 });
+*/
 
-
+/*
 //Buscar producto por ID
 Route::get('buscar', function()
 {
     $producto = Product::find(1);
     return ('El nombre del producto es: '.$producto->nombre);
 });
+*/
 
-
+/*
 //Buscar producto por alguna condicion o campo distinto de ID
 Route::get('buscarxcondicion', function()
 {
     $producto = Product::where('nombre','=','tablet')->get();
     return ('La cantidad de tablet es: '.$producto[0]['cantidad']);
 });
+*/
 
-
+/*
 //Actualizar producto por ID
 Route::get('actualizarproducto', function()
 {
@@ -114,8 +121,9 @@ Route::get('actualizarproducto', function()
     $producto->save();
     return ('Producto actualizado');
 });
+*/
 
-
+/*
 //Eliminar producto por ID
 Route::get('eliminar', function()
 {
@@ -123,3 +131,4 @@ Route::get('eliminar', function()
     $producto->delete();
     return ('El producto con el ID fué eliminado');
 });
+*/
